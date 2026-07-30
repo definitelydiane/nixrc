@@ -1,0 +1,32 @@
+window-padding-balance = true
+window-padding-x = 4
+window-padding-y = 4
+
+cursor-style = block
+cursor-style-blink = true
+shell-integration-features = no-cursor
+
+split-divider-color = #FFFFFF
+split-inherit-working-directory = true
+
+keybind = ctrl+h=goto_split:left
+keybind = ctrl+j=goto_split:bottom
+keybind = ctrl+k=goto_split:top
+keybind = ctrl+l=goto_split:right
+
+keybind = ctrl+shift+h=new_split:left
+keybind = ctrl+shift+j=new_split:down
+keybind = ctrl+shift+k=new_split:up
+keybind = ctrl+shift+l=new_split:right
+keybind = ctrl+shift+f=toggle_split_zoom
+
+keybind = super+h=resize_split:left,12
+keybind = super+j=resize_split:down,12
+keybind = super+k=resize_split:up,12
+keybind = super+l=resize_split:right,12
+
+keybind = super+n=next_tab
+keybind = super+m=previous_tab
+
+keybind = super+r=reload_config
+keybind = ctrl+shift+x=close_surface

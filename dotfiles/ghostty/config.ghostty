@@ -1,3 +1,9 @@
+font-family = Iosevka Custom
+font-size = 10
+font-feature = -calt
+
+theme = kasugano
+
 window-padding-balance = true
 window-padding-x = 4
 window-padding-y = 4

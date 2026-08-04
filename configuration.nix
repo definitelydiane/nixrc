@@ -14,6 +14,22 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+	hardware = {
+		graphics.enable = true;
+		graphics.enable32Bit = true;
+	};
+
+	services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = false;
+    nvidiaSettings = true;
+
+		# 1080ti going strong
+		package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+  };
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -57,16 +73,22 @@
     elisa
   ];
 
+	# Enable Ozone Wayland support for Chromium and Electron based applications
+	environment.sessionVariables.NIX_OZONE_WL = "1";
 
-  
+	environment.variables.LIBVA_DRIVER_NAME = "nvidia";
 
   # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+	services.pulseaudio.enable = false; # Use Pipewire
+
+	security.rtkit.enable = true; # RealtimeKit for audio
+
+	services.pipewire = {
+		enable = true;
+		alsa.enable = true;
+		alsa.support32Bit = true;
+		pulse.enable = true;
+	};
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # users.users.alice = {
@@ -126,8 +148,13 @@
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (pkgs.lib.getName pkg) [
       "discord" 
+			"obsidian"
       "steam"
       "steam-unwrapped"
+      "nvidia-x11"
+      "nvidia-settings"
+			"nvidia-persistenced"
+      "nvidia-kernel-modules"
     ];
 
   programs.steam = {
@@ -149,12 +176,15 @@
       pkgs.firefox
       pkgs.discord
       pkgs.vlc
+			pkgs.obsidian
 
       pkgs.vimPlugins.vim-plug
       pkgs.nodejs # Necessary for COC...
 
       pkgs.glow # MD preview in term
       pkgs.yazi # File manager in term
+
+			pkgs.v4l-utils
     ];
   };
 

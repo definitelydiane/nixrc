@@ -177,6 +177,7 @@
       pkgs.discord
       pkgs.vlc
 			pkgs.obsidian
+			pkgs.signal-desktop
 
       pkgs.vimPlugins.vim-plug
       pkgs.nodejs # Necessary for COC...

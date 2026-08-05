@@ -10,6 +10,7 @@ call plug#begin('~/.vim/plugs')
 
 " Better JSON linting "
 Plug 'elzr/vim-json', { 'for': 'json' }
+let g:vim_json_syntax_conceal = 0
 
 " Typescript highlighting "
 " Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }

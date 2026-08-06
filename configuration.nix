@@ -179,6 +179,10 @@
 			pkgs.obsidian
 			pkgs.signal-desktop
 
+			# General music stuff
+			pkgs.audacity
+			pkgs.musescore
+
       pkgs.vimPlugins.vim-plug
       pkgs.nodejs # Necessary for COC...
 

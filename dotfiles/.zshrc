@@ -9,3 +9,6 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
+function cdnixrc() {
+	cd ~/repos/github.com/definitelydiane/nixrc
+}

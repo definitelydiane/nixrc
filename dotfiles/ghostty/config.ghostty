@@ -1,5 +1,5 @@
 font-family = Iosevka Custom
-font-size = 10
+font-size = 11
 font-feature = -calt
 
 theme = kasugano
@@ -31,8 +31,12 @@ keybind = super+j=resize_split:down,12
 keybind = super+k=resize_split:up,12
 keybind = super+l=resize_split:right,12
 
-keybind = super+n=next_tab
-keybind = super+m=previous_tab
+keybind = super+m=next_tab
+keybind = super+n=previous_tab
 
 keybind = super+r=reload_config
 keybind = ctrl+shift+x=close_surface
+
+# Copy paste for Nix
+keybind = performable:ctrl+c=copy_to_clipboard
+keybind = ctrl+v=paste_from_clipboard

@@ -30,6 +30,9 @@
 		package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
 
+	# Docker
+	virtualisation.docker.enable = true;
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -168,13 +171,14 @@
   users.users.diane = {
     isNormalUser = true;
     description = "Diane";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "docker" ];
     shell = pkgs.zsh;
     home = "/home/diane";
     packages = [
       pkgs.ghostty
       pkgs.firefox
       pkgs.discord
+			pkgs.musicpresence # Share apple music rich presence on discord
       pkgs.vlc
 			pkgs.obsidian
 			pkgs.signal-desktop
@@ -183,13 +187,22 @@
 			pkgs.audacity
 			pkgs.musescore
 
+			# Useful dev tools i want to have
+			pkgs.dbeaver-bin
+
+			# I just think it's neat...
+			pkgs.rofi
+
       pkgs.vimPlugins.vim-plug
       pkgs.nodejs # Necessary for COC...
 
       pkgs.glow # MD preview in term
       pkgs.yazi # File manager in term
+			pkgs.viu # Image preview in kitty protocol term (i.e. ghostty)
 
 			pkgs.v4l-utils
+
+			pkgs.openmw # Idk how to install this otherwise
     ];
   };
 
@@ -199,6 +212,7 @@
     git
     tree
     jq
+		fx
     yq
     zsh
     curl

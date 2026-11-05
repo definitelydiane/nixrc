@@ -77,7 +77,7 @@
   ];
 
 	# Enable Ozone Wayland support for Chromium and Electron based applications
-	environment.sessionVariables.NIX_OZONE_WL = "1";
+	environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
 	environment.variables.LIBVA_DRIVER_NAME = "nvidia";
 
@@ -178,10 +178,11 @@
       pkgs.ghostty
       pkgs.firefox
       pkgs.discord
-			pkgs.musicpresence # Share apple music rich presence on discord
       pkgs.vlc
 			pkgs.obsidian
 			pkgs.signal-desktop
+
+			pkgs.anki
 
 			# General music stuff
 			pkgs.audacity

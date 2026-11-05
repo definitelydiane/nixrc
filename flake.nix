@@ -20,6 +20,18 @@
         modules = [
           ./configuration.nix
           {
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (nixpkgs.lib.getName pkg) [
+                "discord"
+                "discord-unwrapped"
+                "obsidian"
+                "steam"
+                "steam-unwrapped"
+                "nvidia-x11"
+                "nvidia-settings"
+                "nvidia-persistenced"
+                "nvidia-kernel-modules"
+              ];
             nixpkgs.overlays = [
               (final: prev:
                 let
@@ -33,6 +45,7 @@
                   # Unstable Discord (1.0.168) fixes the H.264/error 2012
                   # decoder bug. Remove this line to keep stable Discord.
                   discord = unstable.discord;
+									signal-desktop = unstable.signal-desktop;
                 })
             ];
           }

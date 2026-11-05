@@ -148,18 +148,6 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (pkgs.lib.getName pkg) [
-      "discord" 
-			"obsidian"
-      "steam"
-      "steam-unwrapped"
-      "nvidia-x11"
-      "nvidia-settings"
-			"nvidia-persistenced"
-      "nvidia-kernel-modules"
-    ];
-
   programs.steam = {
     enable = true;
   };
